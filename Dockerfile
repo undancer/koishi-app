@@ -15,9 +15,9 @@ RUN npm install -g npm@9.3.1
 
 COPY --from=builder /app /app
 
-RUN apk update --no-cache && apk upgrade --no-cache
-
-RUN apk add --no-cache \
+RUN apk update && \
+  apk upgrade && \
+  apk add --update \
   chromium \
   nss \
   freetype \
@@ -26,7 +26,9 @@ RUN apk add --no-cache \
   ttf-freefont \
   font-noto-cjk \
   ffmpeg && \
-  adduser -D koishi && \
+  rm -rf /var/cache/apk/*
+
+RUN adduser -D koishi && \
   chown -R koishi /app
 
 COPY --from=builder /root/.local/share/gocqhttp-nodejs/v1.0.0-rc4/go-cqhttp /root/.local/share/gocqhttp-nodejs/v1.0.0-rc4/go-cqhttp
