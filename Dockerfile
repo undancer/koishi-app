@@ -19,7 +19,7 @@ COPY --from=builder /root/.local/share/gocqhttp-nodejs/v1.0.0-rc4/go-cqhttp /roo
 RUN apk add --no-cache \
   chromium nss freetype harfbuzz ca-certificates ttf-freefont font-noto-cjk ffmpeg && \
   adduser -D koishi && \
-  chown -R koishi /koishi
+  chown -R koishi /app
 
 USER koishi
 
