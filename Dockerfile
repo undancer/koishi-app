@@ -31,8 +31,8 @@ RUN apk update && \
 RUN adduser -D koishi && \
   chown -R koishi /app
 
-COPY --from=builder /root/.local/share/gocqhttp-nodejs/v1.0.0-rc4/go-cqhttp /root/.local/share/gocqhttp-nodejs/v1.0.0-rc4/go-cqhttp
-COPY --from=builder /root/.local/share/gocqhttp-nodejs/v1.0.0-rc4/go-cqhttp /home/koishi/.local/share/gocqhttp-nodejs/v1.0.0-rc4/go-cqhttp
+COPY --from=builder /root/.local/share/gocqhttp-nodejs /root/.local/share/gocqhttp-nodejs
+COPY --from=builder /root/.local/share/gocqhttp-nodejs /home/koishi/.local/share/gocqhttp-nodejs
 
 USER koishi
 
